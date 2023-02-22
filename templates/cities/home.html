@@ -1,0 +1,9 @@
+{% extends 'cities/base.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+    {% for city in qs %}
+        <p><a href="{% url 'cities:detail' city.slug %}">{{city}}</a></p>
+    {% endfor %}
+{% endblock %}

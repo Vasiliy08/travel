@@ -1,0 +1,9 @@
+{% extends 'cities/base.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+    <h1>Подтвердите удаление города {{object}}</h1>
+    {% include 'includes/form.html' with button='Удалить город' %}
+{% endblock %}
