@@ -1,4 +1,4 @@
-{% extends 'cities/base.html' %}
+{% extends 'trains/base.html' %}
 
 {% block title %}{{title}}{% endblock %}
 
@@ -39,17 +39,23 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Город</th>
+              <th scope="col">Поезд</th>
+              <th scope="col">Откуда</th>
+              <th scope="col">Куда</th>
+              <th scope="col">Время в пути</th>
               <th scope="col">Редактировать</th>
               <th scope="col">Удалить</th>
             </tr>
           </thead>
           <tbody>
-            {% for city in qs %}
+            {% for train in qs %}
             <tr>
-              <td><a href="{% url 'cities:detail' city.slug %}">{{city}}</a></td>
-              <td class="del"><a href="{% url 'cities:update' city.slug %}">Редактировать</a></td>
-              <td><a href="{% url 'cities:delete' city.slug %}">Удалить</a></td>
+              <td><a href="{% url 'trains:detail' train.pk %}">{{train}}</a></td>
+              <td>{{train.from_city}}</td>
+              <td>{{train.to_city}}</td>
+              <td>{{train.travel_time}}</td>
+              <td><a href="{% url 'trains:update' train.pk %}">Редактировать</a></td>
+              <td><a href="{% url 'trains:delete' train.pk %}">Удалить</a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -61,7 +67,5 @@
     {% include 'includes/pagination.html' %}
 
 </div>
-
-
 
 {% endblock %}

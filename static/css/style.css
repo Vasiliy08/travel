@@ -7,6 +7,27 @@ body {
     scroll-behavior: smooth;
 }
 
-.section {
+.sec2 {
     padding: 20px;
 }
+
+.section {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 500px;
+}
+
+table {
+    table-layout:fixed;
+}
+
+.section-pag {
+    flex: 1;
+}
+
+.pag {
+    align-self: center;
+    flex: 0;
+}
+

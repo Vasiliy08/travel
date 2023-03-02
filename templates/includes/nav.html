@@ -1,4 +1,5 @@
 {% url 'cities:home' as cities_home_url %}
+{% url 'trains:home' as trains_home_url %}
 {% url 'home' as home_url %}
 <nav class="navbar navbar-expand-lg justify-content-center bg-body-tertiary" data-bs-theme="dark">
     <div class="navbar">
@@ -12,7 +13,7 @@
             <a class="nav-link {% if request.path == cities_home_url %} text-bg-primary {% endif %}" aria-current="page" href="{% url 'cities:home' %}">Города</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link {% if request.path == trains_home_url %} text-bg-primary {% endif %}" href="{% url 'trains:home' %}">Поезда</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -20,7 +21,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{% url 'cities:create' %}">Создать город</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="{% url 'trains:create' %}">Создать поезд</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>

@@ -24,7 +24,8 @@ from travel.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
-    path('cities/', include(("cities.urls", 'cities')))
+    path('cities/', include(("cities.urls", 'cities'))),
+    path('trains/', include(('trains.urls', "trains"))),
 ]
 
 handler404 = pageNotFound

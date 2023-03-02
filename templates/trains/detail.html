@@ -1,0 +1,37 @@
+{% extends 'cities/base.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+    <div class="container-lg text-center section">
+    <div class="row justify-content-lg-center section-pag">
+        <div class="col-lg-12">
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Поезд</th>
+                      <th scope="col">Откуда</th>
+                      <th scope="col">Куда</th>
+                      <th scope="col">Время в пути</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr>
+                      <td>{{qs}}</td>
+                      <td>{{qs.from_city}}</td>
+                      <td>{{qs.to_city}}</td>
+                      <td>{{qs.travel_time}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    <div><a href="{% url 'trains:update' qs.pk %}">Обновить</a></div>
+    <div><a href="{% url 'trains:delete' qs.pk %}">Удалить</a></div>
+</div>
+{% endblock %}
