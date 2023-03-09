@@ -10,9 +10,9 @@ class TrainForm(forms.ModelForm):
     travel_time = forms.IntegerField(label='Время', widget=forms.NumberInput(
         attrs={'class': 'form-control', 'placeholder': 'Введите время в пути'}))
     from_city = forms.ModelChoiceField(label='Из города', queryset=City.objects.all(), widget=forms.Select(
-        attrs={'class': 'form-control'}))
+        attrs={'class': 'form-control js-example-basic-single'}))
     to_city = forms.ModelChoiceField(label='В город', queryset=City.objects.all(), widget=forms.Select(
-        attrs={'class': 'form-control'}))
+        attrs={'class': 'form-control js-example-basic-single'}))
 
     class Meta:
         model = Train

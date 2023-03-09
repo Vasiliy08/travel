@@ -69,3 +69,4 @@ class CityDeleteView(SuccessMessageMixin, DeleteView):
 
 def pageNotFound(request, exception):
     return HttpResponseNotFound('Страница не найдена')
+

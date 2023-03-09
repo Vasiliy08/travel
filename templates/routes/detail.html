@@ -1,0 +1,10 @@
+{% extends 'cities/base.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+    {{qs}}
+
+    <div><a href="{% url 'routes:update' qs.slug %}">Обновить</a></div>
+    <div><a href="{% url 'routes:delete' qs.slug %}">Удалить</a></div>
+{% endblock %}

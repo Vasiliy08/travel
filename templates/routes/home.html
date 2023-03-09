@@ -39,17 +39,20 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Город</th>
-              <th scope="col">Редактировать</th>
-              <th scope="col">Удалить</th>
+              <th scope="col">Название маршрута</th>
+              <th scope="col">Из города</th>
+              <th scope="col">В город</th>
+              <th scope="col">Общее время в пути</th>
             </tr>
           </thead>
           <tbody>
-            {% for city in qs %}
+            {% for rout in qs %}
             <tr>
-              <td><a href="{% url 'cities:detail' city.slug %}">{{city}}</a></td>
-              <td class="del"><a href="{% url 'cities:update' city.slug %}">Редактировать</a></td>
-              <td><a href="{% url 'cities:delete' city.slug %}">Удалить</a></td>
+              <td><a href="#">{{city}}</a></td>
+                <td>{{rout.from_city}}</td>
+                <td>{{rout.to_city}}</td>
+                <td>{{rout.travel_time}}</td>
+
             </tr>
             {% endfor %}
           </tbody>

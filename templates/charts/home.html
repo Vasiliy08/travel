@@ -1,0 +1,41 @@
+{% extends 'charts/base.html' %}
+
+{% block content %}
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Сотрудник</th>
+            <th>Час</th>
+            {% for i in qs %}
+            <th>{{i.date}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in qs %}
+        <tr>
+            <td>{{i.name_q}}</td>
+            <td>{{i}}</td>
+            <td>{{i.field_0}}</td>
+            <td>{{i.field_1}}</td>
+            <td>{{i.field_2}}</td>
+            <td>{{i.field_3}}</td>
+            <td>{{i.field_4}}</td>
+            <td>{{i.field_5}}</td>
+            <td>{{i.field_6}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    {{form}}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

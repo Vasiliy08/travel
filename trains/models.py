@@ -8,8 +8,8 @@ from cities.models import City
 class Train(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Номер поезда')
     travel_time = models.PositiveSmallIntegerField(verbose_name='Время в пути')
-    from_city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='Из города', related_name='from_city_set')
-    to_city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='В город', related_name='to_city_set')
+    from_city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='Из города', related_name='train_from_city_set')
+    to_city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='В город', related_name='train_to_city_set')
 
     def __str__(self):
         return f'Поезд №{self.name}'

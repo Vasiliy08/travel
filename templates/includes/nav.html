@@ -1,6 +1,11 @@
 {% url 'cities:home' as cities_home_url %}
 {% url 'trains:home' as trains_home_url %}
+{% url 'routes:home' as routes_home_url %}
 {% url 'home' as home_url %}
+{% url 'cities:create' as cities_create_url %}
+{% url 'trains:create' as trains_create_url %}
+{% url 'routes:create' as routes_create_url %}
+
 <nav class="navbar navbar-expand-lg justify-content-center bg-body-tertiary" data-bs-theme="dark">
     <div class="navbar">
       <a class="navbar-brand {% if request.path == home_url %} active {% endif %}" href="{% url 'home' %}">Домой</a>
@@ -15,15 +20,19 @@
           <li class="nav-item">
             <a class="nav-link {% if request.path == trains_home_url %} text-bg-primary {% endif %}" href="{% url 'trains:home' %}">Поезда</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == routes_home_url %} text-bg-primary {% endif %}" href="{% url 'routes:home' %}">Маршруты</a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'cities:create' %}">Создать город</a></li>
-              <li><a class="dropdown-item" href="{% url 'trains:create' %}">Создать поезд</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item {% if request.path == cities_create_url %} text-bg-primary {% endif %}" href="{% url 'cities:create' %}">Создать город</a></li>
+              <li><a class="dropdown-item {% if request.path == trains_create_url %} text-bg-primary {% endif %}" href="{% url 'trains:create' %}">Создать поезд</a></li>
+              <li><a class="dropdown-item {% if request.path == routes_create_url %} text-bg-primary {% endif %}" href="{% url 'routes:create' %}">Создать маршрут</a></li>
+              <li><a class="dropdown-item" href="{% url 'charts:upload' %}">Графики</a></li>
+
             </ul>
           </li>
           <li class="nav-item">

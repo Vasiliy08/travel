@@ -19,13 +19,20 @@ from django.contrib import admin
 from django.urls import path, include
 
 from cities.views import pageNotFound
-from travel.views import home
+from travel.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name="home"),
+    path('', home, name='home'),
+    path('charts/', include(('charts.urls', 'charts'))),
     path('cities/', include(("cities.urls", 'cities'))),
     path('trains/', include(('trains.urls', "trains"))),
+    path('routes/', include(('routes.urls', "routes"))),
+
 ]
 
 handler404 = pageNotFound
+
+handler500 = 'travel.views.custom_error_view'
+handler403 = 'travel.views.custom_permission_denied_view'
+handler400 = 'travel.views.custom_bad_request_view'

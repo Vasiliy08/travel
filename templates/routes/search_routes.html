@@ -32,35 +32,6 @@
 
 
 
-<div class="container-lg text-center section">
-    <div class="row justify-content-lg-center section-pag">
-        <div class="col-lg-12">
-
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Город</th>
-              <th scope="col">Редактировать</th>
-              <th scope="col">Удалить</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for city in qs %}
-            <tr>
-              <td><a href="{% url 'cities:detail' city.slug %}">{{city}}</a></td>
-              <td class="del"><a href="{% url 'cities:update' city.slug %}">Редактировать</a></td>
-              <td><a href="{% url 'cities:delete' city.slug %}">Удалить</a></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-
-        </div>
-    </div>
-
-    {% include 'includes/pagination.html' %}
-
-</div>
-
-
+    {% url 'routes:search_routes' as action %}
+    {% include 'includes/form.html' with button='Найти' action=action %}
 {% endblock %}
