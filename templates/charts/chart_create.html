@@ -1,0 +1,18 @@
+{% extends 'charts/base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    <table>
+       <tr>
+        {% for form in formset %}
+            <th>{{ form.as_div}}</th>
+        {% endfor %}
+      </tr>
+    </table>
+    <button type="submit">Создать</button>
+</form>
+
+{% endblock %}

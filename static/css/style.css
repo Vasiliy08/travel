@@ -31,3 +31,9 @@ table {
     flex: 0;
 }
 
+th {
+    height: 50px;
+    width: 65px;
+    word-break: break-all;
+}
+

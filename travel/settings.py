@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
+    "import_export",
+
+
     'cities.apps.CitiesConfig',
     'trains.apps.TrainsConfig',
     'charts.apps.ChartsConfig',

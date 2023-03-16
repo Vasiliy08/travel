@@ -1,0 +1,19 @@
+{% extends 'charts/base.html' %}
+
+{% block content %}
+
+<h1>fsdf</h1>
+
+{% for key, val in lst.items %}
+    <tr>
+        <td>{{key}}</td>
+        {% for k, v in val.items %}
+            <td>{{v}}</td>
+        {% endfor %}
+    </tr>
+{% endfor %}
+
+
+
+
+{% endblock %}

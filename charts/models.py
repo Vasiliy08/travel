@@ -3,6 +3,8 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import F, Q
+from django.urls import reverse
+from pytils.translit import slugify
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -55,13 +57,16 @@ class Chart(models.Model):
     def __str__(self):
         return f'{self.name_q} --> {self.date}'
 
+    def get_absolute_url(self):
+        return reverse('charts:charts_detail', kwargs={'post_str': self.name_q})
+
     class Meta:
         verbose_name = 'График'
         verbose_name_plural = 'Графики'
         ordering = ['date']
         constraints = [
-            models.UniqueConstraint(fields=['name_q', 'date'], name='ДЭЭЭЭЭЭЭ')
+        #     models.UniqueConstraint(fields=['name_q', 'date'], name='ДЭЭЭЭЭЭЭ'),
+            models.CheckConstraint(check=models.Q(dcount__gte=0) & models.Q(dcount__lte=24), name='qwEWQ')
         ]
-
 
 
