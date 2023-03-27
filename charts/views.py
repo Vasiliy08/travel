@@ -1,5 +1,6 @@
 import tablib
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest, HttpResponse
 from django.shortcuts import render, redirect
 from django.template import RequestContext
@@ -98,6 +99,8 @@ def import_data_to_bd(request):
 
     return render(request, 'charts/excel.html')
 
+
+@login_required
 def chart_test(request):
     qs_lst = []
     lst = []
@@ -225,19 +228,26 @@ def chart_detail(request, post_str, date_str):
 
     return render(request, 'charts/detail.html', {'qs_lst': qs_lst})
 
+# def create_chart(request):
+#     if request.method == 'POST':
+#         formset = ChartFormSet(request.POST, request.FILES)
+#         if formset.is_valid():
+#             # do something with the formset.cleaned_data
+#             print(formset.cleaned_data)
+#             for form in formset.cleaned_data:
+#                 print(form)
+#                 Chart.objects.create(**form)
+#     else:
+#         formset = ChartFormSet()
+#     return render(request, 'charts/chart_create.html', {'formset': formset})
 
 
-
-
-def create_chart(request):
+def add_chart(request):
     if request.method == 'POST':
-        formset = ChartFormSet(request.POST, request.FILES)
-        if formset.is_valid():
-            # do something with the formset.cleaned_data
-            print(formset.cleaned_data)
-            for form in formset.cleaned_data:
-                print(form)
-                Chart.objects.create(**form)
+        context = {}
+        data = request.POST
+        for k, v in data.items():
+            print(k, v)
+        return render(request, 'charts/home.html', context)
     else:
-        formset = ChartFormSet()
-    return render(request, 'charts/chart_create.html', {'formset': formset})
+        return redirect('')

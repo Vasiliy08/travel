@@ -2,6 +2,7 @@
 {% url 'trains:home' as trains_home_url %}
 {% url 'routes:home' as routes_home_url %}
 {% url 'charts:home' as charts_home_url %}
+{% url 'accounts:login' as accounts_login_url %}
 {% url 'home' as home_url %}
 {% url 'cities:create' as cities_create_url %}
 {% url 'trains:create' as trains_create_url %}
@@ -27,9 +28,10 @@
           <li class="nav-item">
             <a class="nav-link {% if request.path == charts_home_url %} text-bg-primary {% endif %}" href="{% url 'charts:home' %}">Графики</a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Создать
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item {% if request.path == cities_create_url %} text-bg-primary {% endif %}" href="{% url 'cities:create' %}">Создать город</a></li>
@@ -38,14 +40,32 @@
 
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
+          {% endif %}
+            <li class="nav-item">
+                <button class="btn nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Раскрыть</button>
+            </li>
+
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+
       </div>
     </div>
 </nav>
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Привет</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    {% if user.is_authenticated %}
+    <li>
+        <a class="nav-link {% if request.path == accounts_login_url %} text-bg-primary {% endif %}" aria-current="page" href="{% url 'accounts:logout' %}">Выйти</a>
+    </li>
+    {% else %}
+    <li>
+        <a class="nav-link {% if request.path == accounts_login_url %} text-bg-primary {% endif %}" aria-current="page" href="{% url 'accounts:login' %}">Войти</a>
+    </li>
+    {% endif %}
+
+  </div>
+</div>

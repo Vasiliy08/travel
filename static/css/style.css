@@ -7,6 +7,14 @@ body {
     scroll-behavior: smooth;
 }
 
+li {
+list-style-type: none; /* Убираем маркеры */
+}
+ul {
+padding-left: 0; /* Сдвигаем список влево */
+}
+
+
 .sec2 {
     padding: 20px;
 }

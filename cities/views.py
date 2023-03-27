@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -31,7 +32,7 @@ class CityDetailView(DetailView):
         context['title'] = f'Город {context.get("object")}'
         return context
 
-class CityCreateView(SuccessMessageMixin, CreateView):
+class CityCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     form_class = CityForm
     model = City
     template_name = 'cities/create.html'

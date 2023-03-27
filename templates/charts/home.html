@@ -2,7 +2,9 @@
 
 {% block content %}
 
-
+<form action="{% url 'charts:add_chart' %}" method="post"> {% csrf_token %}
+    <input type="hidden" name="1" value="{{lst}}">
+    {{lst}}
 <table>
     <thead>
         <tr>
@@ -23,7 +25,8 @@
         {% endfor %}
     </tbody>
 </table>
-
+    <button type="submit">ДАвай давай</button>
+</form>
 
 <form action="" method="post">
     {% csrf_token %}
